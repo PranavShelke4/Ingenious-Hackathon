@@ -38,7 +38,6 @@ function AllServices() {
         {activeTab === "tab3" && <div>Content for Tab 3</div>}
       </div>
     </div>
-    <Details />
     </>
   );
 }
