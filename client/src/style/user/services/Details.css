@@ -1,0 +1,68 @@
+.details-main-container{
+   padding: 0;
+   margin: 0;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+}
+.service-img{
+    width: 58vw;
+    height: 55vh;
+    border-radius: 2rem;
+}
+
+.details-description {
+    margin-top: 4%;
+    width: 58vw; 
+    text-align: justify;
+    padding: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); 
+    border-radius: 1.5rem;
+}
+.details-description-title{
+    font-weight: bold;
+    margin-bottom: 3%;
+
+}
+.details-heading-title{
+    margin-bottom: 18%;
+    font-weight: bolder;
+   
+
+}
+.details-review{
+    margin-top: 4%;
+    width: 58vw; 
+    text-align: justify;
+    padding: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); 
+    border-radius: 1.5rem;
+}
+.review-button {
+    background-color: #007bff; /* Blue color */
+    color: white; 
+    border: none;
+    padding: 10px 20px; /* Padding for button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Show pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; 
+    position: relative;
+    left: 75%;
+}
+
+.review-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+.review-head{
+    font-size: 1.8rem;
+    font-weight: 600;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "../../../style/user/services/AllServices.css";
+
+import  Appoinmentform from'../services/Appoinmentform'
+import Details from "./Details";
+
 import ServiceCards from "./ServiceCards";
 import Appoinmentform from "../services/Appoinmentform";
 
@@ -43,7 +47,15 @@ function AllServices() {
           {activeTab === "tab3" && <div>Content for Tab 3</div>}
         </div>
       </div>
+      <div className="tab-content">
+        {activeTab === "tab1" && <div>Content for Tab 1</div>}
+        {activeTab === "tab2" && <div>Content for Tab 2</div>}
+        {activeTab === "tab3" && <div>Content for Tab 3</div>}
+      </div>
+    </div>
+
       <Appoinmentform />
+
     </>
   );
 }
