@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "../../../style/user/services/AllServices.css";
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 24a0f7fc9bb83914770c731b2c89d2e283ab772c
 import ServiceCards from "./ServiceCards";
 
 function AllServices() {
