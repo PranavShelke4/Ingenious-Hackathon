@@ -77,7 +77,7 @@ function Signup() {
                   type="text"
                   name="name"
                   className="form-control-input"
-                  id="exampleInputName"
+                  id="adminExampleInputName"
                   value={user.name}
                   onChange={handleInputs}
                   placeholder="Your Name"

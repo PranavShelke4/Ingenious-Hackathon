@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "../../../style/user/services/AllServices.css";
-
-import  Appoinmentform from'../services/Appoinmentform'
-import Details from "./Details";
-
 import ServiceCards from "./ServiceCards";
-import Appoinmentform from "../services/Appoinmentform";
 
 function AllServices() {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -19,8 +14,8 @@ function AllServices() {
       <div className="AllServices">
         <div className="tab-container">
           <div
-            className={`tab ${activeTab === "tab1" ? "active" : ""}`}
-            onClick={() => handleTabClick("tab1")}
+            className={`tab ${activeTab === "Assembly" ? "active" : ""}`}
+            onClick={() => handleTabClick("Assembly")}
           >
             Tab 1
           </div>
@@ -38,7 +33,7 @@ function AllServices() {
           </div>
         </div>
         <div className="tab-content">
-          {activeTab === "tab1" && (
+          {activeTab === "Assembly" && (
             <div>
               <ServiceCards />
             </div>
@@ -48,14 +43,10 @@ function AllServices() {
         </div>
       </div>
       <div className="tab-content">
-        {activeTab === "tab1" && <div>Content for Tab 1</div>}
+        {activeTab === "Assembly" && <div>Content for Tab 1</div>}
         {activeTab === "tab2" && <div>Content for Tab 2</div>}
         {activeTab === "tab3" && <div>Content for Tab 3</div>}
       </div>
-    </div>
-
-      <Appoinmentform />
-
     </>
   );
 }

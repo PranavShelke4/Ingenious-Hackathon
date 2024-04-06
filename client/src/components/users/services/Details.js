@@ -9,7 +9,7 @@ const Details = () => {
         <h2 className="details-heading-title">Service Details</h2>
       </div>
       <div className="details-img">
-        <img src={Serviceimage} className="service-img"></img>
+        <img alt="img" src={Serviceimage} className="service-img" />
       </div>
       <div className="details-description">
         <h4 className="details-description-title">Overview</h4>
