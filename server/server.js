@@ -25,7 +25,7 @@ app.use(require('./route/adminRoute'));
 app.use(require('./route/userRoute'));
 app.use(require('./route/serviceRoute'));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 
 app.listen(PORT, () => {
