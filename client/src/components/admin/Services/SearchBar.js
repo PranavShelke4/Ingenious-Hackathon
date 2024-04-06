@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios';
+
+import React, { useState } from "react";
 import "../../../style/admin/services/SearchBar.css";
 
 function SearchBar() {
@@ -25,7 +27,6 @@ function SearchBar() {
 useEffect(() => {
     localStorage.setItem('services', JSON.stringify(formData));
   }, [formData]);
-
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -187,11 +188,13 @@ useEffect(() => {
               <br />
               <div class="file-input">
                 <input id="service-input" type="file" class="real-input" onChange={handleImageChange} />
+                <input id="service-input" type="file" class="real-input" />
                 <div class="button">
                   Choose File <span>or drop file</span>
                 </div>
               </div>
               <button type="submit" className="Add-Service-btn">Submit</button>
+              <button className="Add-Service-btn">Submit</button>
             </form>
           </div>
         </div>

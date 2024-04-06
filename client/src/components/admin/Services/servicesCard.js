@@ -21,25 +21,23 @@ function ServicesCard() {
   console.log(services);
   return (
     <div className="services-Cards">
-      <div className="services-Card">
-        {services.map((service) => (
-          <div key={service._id}>
-            <img src={service.image} alt={service.name}/>
-            <div className="services-info">
-            <h5>{service.name}</h5>
-            <p>{service.shortDescription}</p>
-            <hr />
-              <div className="service-price-and-other-info">
-                <h6>{service.price}</h6>
-                <h6>100 Appoiments</h6>
-                <h6>4.2 Stars</h6>
-              </div>
-            </div>
-          </div>
-        ))}
+        <div className="services-Card">
+            {services.map((service) => (
+                    <div key={service._id}>
+                        <img src={service.image} alt={service.name}/>
+                        <div className="services-info">
+                                <h5>{service.name}</h5>
+                                <p>{service.shortDescription}</p>
+                                <hr />
+                                <div className="service-price-and-other-info">
+                                    <h6>{service.price}</h6>
+                                    <h6>100 Appoiments</h6>
+                                    <h6>4.2 Stars</h6>
+                                </div>
+                        </div>
+                    </div>
+                ))}
         </div>
     </div>
-  );
-}
-
+    )}
 export default ServicesCard;
