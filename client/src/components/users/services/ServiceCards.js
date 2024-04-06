@@ -21,7 +21,7 @@ function ServiceCards() {
           </div>
           <div className="service-price-content">
             <h3>30$/hr</h3>
-            <NavLink to="/service-details" style={{ textDecoration: "none" }}>
+            <NavLink to="/details" style={{ textDecoration: "none" }}>
               <button className="Book-Now-btn">view-details</button>
             </NavLink>
           </div>
