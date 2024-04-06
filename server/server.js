@@ -4,6 +4,8 @@ const cors = require("cors");
 
 const express = require("express");
 const app = express();
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const cookieParser = require("cookie-parser");
 
 require("./db/conn");
@@ -16,6 +18,18 @@ var bodyParser = require("body-parser");
 app.use(express.json());
 
 // cookie-parser middleware
+app.use(cookieParser()); 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
+// Rout Link
+app.use(require('./route/adminRoute'));
+app.use(require('./route/userRoute'));
+app.use(require('./route/serviceRoute'));
 app.use(cookieParser());
 
 // cors middleware
@@ -29,7 +43,7 @@ app.use(require("./route/adminRoute"));
 app.use(require("./route/userRoute"));
 app.use(require("./route/serviceRoute"));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`server is runing at port ${PORT}`);

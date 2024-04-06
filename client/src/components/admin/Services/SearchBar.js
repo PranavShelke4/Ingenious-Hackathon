@@ -1,9 +1,33 @@
+import React, { useState, useEffect} from "react";
+import axios from 'axios';
+
 import React, { useState } from "react";
 import axios from "axios";
 import "../../../style/admin/services/SearchBar.css";
 
 function SearchBar() {
   const [showModal, setShowModal] = useState(false);
+  var imageData="";
+  // SAVE SERVICE DATA.
+  const [formData, setFormData] = useState({
+    name: '',
+    category: '',
+    price: '',
+    shortDescription: '',
+    fullDescription: '',
+    image: null,
+  });
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('services'));
+    if (data) {
+        setFormData(data);
+    }
+  }, []);
+
+useEffect(() => {
+    localStorage.setItem('services', JSON.stringify(formData));
+  }, [formData]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -18,6 +42,66 @@ function SearchBar() {
     setShowModal(!showModal);
   };
 
+  // Function to convert File to Base64
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  // Handle changes in Input Field while Adding New Service
+  const onChangeName = (e) => {
+    setFormData({ ...formData, name: e.target.value });
+  };
+
+  const onChangeCategory = (e) => {
+    setFormData({ ...formData, category: e.target.value });
+  };
+
+  const onChangePrice = (e) => {
+    setFormData({ ...formData, price: e.target.value });
+  };
+
+  const onChangeShortDesc = (e) => {
+    setFormData({ ...formData, shortDescription: e.target.value });
+  };
+
+  const onChangeFullDesc = (e) => {
+    setFormData({ ...formData, fullDescription: e.target.value });
+  };
+
+  const handleImageChange = async (e) => {
+    imageData = await fileToBase64(e.target.files[0] );
+    setFormData({ ...formData, image: imageData});
+  };
+
+  // Submitting the Service Data in the MongoDB Server.
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    try {
+      const response = await axios.post('http://localhost:5000/add-services',formData)
+      if (response.status === 201) {
+
+        console.log('Service data Submitted successfully');
+        
+        // Optionally, reset form fields
+        setFormData({
+          name: '',
+          category: '',
+          price: '',
+          shortDescription: '',
+          fullDescription: '',
+          image: null,
+        });
+      } else {
+        console.error('Failed to submit service data');
+      }
+    } catch (error) {
+      console.error('Error submitting service data:', error);
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     setFormData({
@@ -107,12 +191,24 @@ function SearchBar() {
             <h5>Service add form</h5>
             <p>Please fill the form and upload the file</p>
 
+            <form className="add-service-form" onSubmit={handleSubmit}>
             <form onSubmit={handleSubmit} className="add-service-form">
               <div style={{ display: "flex", gap: "1rem" }}>
                 <input
                   className="service-name-input"
                   id="service-input"
                   type="text"
+                  placeholder="Service Name"
+                  value={formData.name}
+                  onChange={onChangeName}
+                />
+                <input
+                  className="service-name-input"
+                  id="service-input"
+                  type="text"
+                  placeholder="Service Category"
+                  value={formData.category}
+                  onChange={onChangeCategory}
                   placeholder="Service Title"
                   name="title"
                   value={formData.title}
@@ -124,6 +220,9 @@ function SearchBar() {
                   id="service-input"
                   placeholder="Service Price per hour"
                   type="number"
+                  placeholder="Service Price"
+                  value={formData.price}
+                  onChange={onChangePrice}
                   name="price"
                   value={formData.price}
                   onChange={handleChange}
@@ -135,6 +234,9 @@ function SearchBar() {
                 id="service-input"
                 type="text"
                 placeholder="Service Short Description"
+                value={formData.shortDescription}
+                onChange={onChangeShortDesc}
+              />{" "}
                 name="shortDescription"
                 value={formData.shortDescription}
                 onChange={handleChange}
@@ -147,6 +249,17 @@ function SearchBar() {
                 id="service-input"
                 type="text"
                 placeholder="Service Long Description"
+                value={formData.fullDescription}
+                onChange={onChangeFullDesc}
+              />{" "}
+              <br />
+              <label>Upload your file</label>
+              <br />
+              <div class="file-input">
+                <input id="service-input" type="file" class="real-input" onChange={handleImageChange} />
+                <input id="service-input" type="file" class="real-input" />
+                <div class="button">
+                  Choose File <span>or drop file</span>
                 name="fullDescription"
                 value={formData.fullDescription}
                 onChange={handleChange}
@@ -184,6 +297,8 @@ function SearchBar() {
                   </select>
                 </label>
               </div>
+              <button type="submit" className="Add-Service-btn">Submit</button>
+              <button className="Add-Service-btn">Submit</button>
               <button type="submit" className="Add-Service-btn">
                 Submit
               </button>
