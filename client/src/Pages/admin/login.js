@@ -10,7 +10,7 @@ function Login() {
   const loginAdmin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/admin-signin", {
+    const res = await fetch("https://ingenious-hackathon-git-main-prashant-kales-projects.vercel.app/admin-signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
