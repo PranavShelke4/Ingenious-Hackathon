@@ -29,7 +29,7 @@ function Signup() {
 
     const { name, email, number, work, password, cpassword } = user;
 
-    const resp = await fetch("http://localhost:5000/user-signup", {
+    const resp = await fetch("https://ingenious-hackathon-git-main-prashant-kales-projects.vercel.app/user-signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
